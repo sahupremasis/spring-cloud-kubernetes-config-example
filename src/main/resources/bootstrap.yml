@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: config-spring-cloud-k8s-example
+      reload:
+        enabled: true
+        mode: event

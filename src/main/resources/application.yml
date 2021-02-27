@@ -1,0 +1,21 @@
+logging:
+  level:
+    com:
+      labs:
+        kubernetes:
+          springcloudkubernetesconfigexample: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+
+welcome:
+  message:
+    hello: Hello message from application.yml
+
+spring.application.name: config-spring-cloud-k8s-example
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, refresh,keepalive,health
+
