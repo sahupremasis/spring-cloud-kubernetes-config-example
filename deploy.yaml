@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-spring-cloud-k8s-example
+spec:
+  selector:
+    app: config-spring-cloud-k8s-example
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30083
+  type: NodePort
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-spring-cloud-k8s-example
+spec:
+  selector:
+    matchLabels:
+      app: config-spring-cloud-k8s-example
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-spring-cloud-k8s-example
+    spec:
+      containers:
+        - name: config-spring-cloud-k8s-example
+          image: config-spring-cloud-k8s-example
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
